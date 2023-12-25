@@ -25,7 +25,7 @@ class Wilayas
             return Cache::get('wilayas');
         }
 
-        $response =  self::response();
+        $response =  Yalidine::response(self::$resource);
 
         $wilayas = $response->pluck('name');
 
