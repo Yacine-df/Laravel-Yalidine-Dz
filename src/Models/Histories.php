@@ -1,9 +1,9 @@
 <?php
 
-namespace Yacinediaf\Yalidine;
+namespace Yacinediaf\Yalidine\Models;
 
-use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
+use Yacinediaf\Yalidine\Yalidine;
 
 class Histories
 {
