@@ -23,31 +23,10 @@ class Communes
             ]
         ];
 
-        $response =  self::response($query);
+        $response =  Yalidine::response(self::$resource, $query);
 
         $communes = $response->pluck('name');
 
         return $communes;
-    }
-
-
-    public static function response($query = [])
-    {
-
-        try {
-
-            $response = Yalidine::client()->get(self::$resource, $query);
-
-            $response = collect(json_decode($response->getBody(), true)['data']);
-
-            return $response;
-        } catch (GuzzleException $e) {
-
-            return response()->json([
-
-                'error' => $e->getMessage()
-
-            ]);
-        }
     }
 }

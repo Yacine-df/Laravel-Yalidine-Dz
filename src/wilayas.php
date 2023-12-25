@@ -47,25 +47,6 @@ class Wilayas
             ]
         ];
 
-        return self::response($query);
-    }
-
-
-    public static function response($query = [])
-    {
-
-        try {
-
-            $response = Yalidine::client()->get(self::$resource, $query);
-
-            return collect(json_decode($response->getBody(), true)['data']);
-        } catch (GuzzleException $e) {
-
-            return response()->json([
-
-                'error' => $e->getMessage()
-
-            ]);
-        }
+        return Yalidine::response(self::$resource, $query);
     }
 }
