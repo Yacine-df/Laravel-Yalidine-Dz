@@ -1,10 +1,10 @@
 <?php
 
-namespace Yacinediaf\Yalidine;
+namespace Yacinediaf\Yalidine\Models;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
+use Yacinediaf\Yalidine\Yalidine;
 
 class Wilayas
 {

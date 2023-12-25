@@ -1,9 +1,9 @@
 <?php
 
-namespace Yacinediaf\Yalidine;
+namespace Yacinediaf\Yalidine\Models;
 
-use GuzzleHttp\Exception\GuzzleException;
 use InvalidArgumentException;
+use Yacinediaf\Yalidine\Yalidine;
 
 class DeliveryFees
 {
