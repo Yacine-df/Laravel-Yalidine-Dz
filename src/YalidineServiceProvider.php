@@ -14,7 +14,6 @@ class YalidineServiceProvider extends ServiceProvider
         $this->app->singleton(Yalidine::class, function () {
 
             return new Yalidine();
-
         });
     }
 
@@ -24,12 +23,11 @@ class YalidineServiceProvider extends ServiceProvider
         /**
          * publish yalidine config file into the laravel config files
          */
-        
+
         $this->publishes([
 
-            __DIR__ . '/../config/yalidine.php' => config('yalidine.php')
+            __DIR__ . '/../config/yalidine.php' => config_path('yalidine.php')
 
         ]);
-
     }
 }

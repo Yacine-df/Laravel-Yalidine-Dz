@@ -8,6 +8,8 @@ return [
      * 
      */
 
-    'key' => config('YALIDINE_API_KEY')
+    'key' => env('YALIDINE_API_KEY'),
+
+    'token' => env('YALIDINE_API_TOKEN')
 
 ];
