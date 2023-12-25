@@ -23,7 +23,7 @@ class DeliveryFees
             ]
         ];
 
-        $response =  self::response($query);
+        $response =  Yalidine::response(self::$resource, $query);
 
         $fees = $response->map(function ($fee) {
 
@@ -37,22 +37,4 @@ class DeliveryFees
         return $fees;
     }
 
-
-    public static function response($query = [])
-    {
-
-        try {
-
-            $response = Yalidine::client()->get(self::$resource, $query);
-
-            return collect(json_decode($response->getBody(), true)['data']);
-        } catch (GuzzleException $e) {
-
-            return response()->json([
-
-                'error' => $e->getMessage()
-
-            ]);
-        }
-    }
 }

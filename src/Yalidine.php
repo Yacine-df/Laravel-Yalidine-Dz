@@ -3,6 +3,7 @@
 namespace Yacinediaf\Yalidine;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 class Yalidine
 {
@@ -21,5 +22,25 @@ class Yalidine
         ]);
 
         return $client;
+    }
+
+
+    public static function response($resource, $query = [])
+    {
+
+        try {
+
+            $response = Yalidine::client()->get($resource, $query);
+
+            return collect(json_decode($response->getBody(), true)['data']);
+            
+        } catch (GuzzleException $e) {
+
+            return response()->json([
+
+                'error' => $e->getMessage()
+
+            ]);
+        }
     }
 }
