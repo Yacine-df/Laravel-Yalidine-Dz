@@ -25,16 +25,18 @@ class DeliveryFees
 
         $response =  Yalidine::response(self::$resource, $query);
 
-        $fees = $response->map(function ($fee) {
+        try {
+            $fees = $response->map(function ($fee) {
 
-            return [
-                'wilaya' => $fee['wilaya_name'],
-                'home' => $fee['home_fee'],
-                'desk' => $fee['desk_fee']
-            ];
-        });
-
-        return $fees;
+                return [
+                    'wilaya' => $fee['wilaya_name'],
+                    'home' => $fee['home_fee'],
+                    'desk' => $fee['desk_fee']
+                ];
+            });
+        } catch (\Exception $e) {
+            abort(503, 'Connection Issues');
+        }
+        return $fees[0];
     }
-
 }

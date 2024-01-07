@@ -3,7 +3,6 @@
 namespace Yacinediaf\Yalidine;
 
 use Illuminate\Support\ServiceProvider;
-use Yalidine;
 
 class YalidineServiceProvider extends ServiceProvider
 {

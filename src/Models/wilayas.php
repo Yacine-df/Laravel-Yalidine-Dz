@@ -2,6 +2,9 @@
 
 namespace Yacinediaf\Yalidine\Models;
 
+use Exception;
+use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
 use Yacinediaf\Yalidine\Yalidine;
@@ -27,7 +30,11 @@ class Wilayas
 
         $response =  Yalidine::response(self::$resource);
 
-        $wilayas = $response->pluck('name');
+        try {
+            $wilayas = $response->pluck('name', 'id');
+        } catch (\Exception $e) {
+            abort(503, 'Connection Issues');
+        }
 
         return $wilayas;
     }
@@ -37,7 +44,7 @@ class Wilayas
      */
     public static function find($id = null)
     {
-        if ($id == null) {
+        if (!isset($id)) {
             throw new InvalidArgumentException;
         }
 

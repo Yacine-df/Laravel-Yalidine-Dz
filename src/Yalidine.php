@@ -38,7 +38,7 @@ class Yalidine
 
             return response()->json([
 
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
 
             ]);
         }

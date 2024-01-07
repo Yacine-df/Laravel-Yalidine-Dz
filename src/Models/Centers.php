@@ -5,14 +5,19 @@ namespace Yacinediaf\Yalidine\Models;
 use InvalidArgumentException;
 use Yacinediaf\Yalidine\Yalidine;
 
-class Communes
+class Centers
 {
+    private static $resource = "centers";
 
-    private static $resource = "communes";
+    /**
+     * Find Centers using a given wilaya id
+     * centers are yalidine's desks in a specific wilaya
+     */
 
-    public static function find($id = null)
+    public static function findByWilaya($id = null)
     {
         if ($id == null) {
+
             throw new InvalidArgumentException();
         }
 
@@ -25,11 +30,13 @@ class Communes
         $response =  Yalidine::response(self::$resource, $query);
 
         try {
-            $communes = $response->pluck('name');
+
+            $centers = $response->pluck('name', 'center_id');
         } catch (\Exception $e) {
+
             abort(503, 'Connection Issues');
         }
 
-        return $communes;
+        return $centers;
     }
 }
