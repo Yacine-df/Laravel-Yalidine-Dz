@@ -11,30 +11,6 @@ class Parcels
 
     private static $resource = "parcels";
 
-    public static $data = array(
-        array( // second parcel
-            "order_id" => "MySecondOrder",
-            "from_wilaya_name" => "Batna",
-            "firstname" => "رفيدة",
-            "familyname" => "بن مهيدي",
-            "contact_phone" => "0697356159",
-            "address" => "حي الياسمين",
-            "to_commune_name" => "Ouled Fayet",
-            "to_wilaya_name" => "Alger",
-            "product_list" => "كتب الطبخ",
-            "price" => 2400,
-            "do_insurance" => false,
-            "declared_value" => 3500,
-            "height" => 10,
-            "width" => 20,
-            "length" => 30,
-            "weight" => 6,
-            "freeshipping" => 0,
-            "is_stopdesk" => 0,
-            "has_exchange" => false,
-        )
-    );
-
 
     public static function create($data)
     {
